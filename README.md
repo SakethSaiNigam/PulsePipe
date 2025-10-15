@@ -122,7 +122,3 @@ make run-dashboard
 ```bash
 pytest -q
 ```
-
-## License
-
-MIT
