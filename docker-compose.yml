@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    image: pulsepipe:latest
+    container_name: pulsepipe_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: ["uvicorn","src.app.api:app","--host","0.0.0.0","--port","8000","--reload"]
+
+  dashboard:
+    image: pulsepipe:latest
+    container_name: pulsepipe_dashboard
+    depends_on:
+      - api
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    command: ["streamlit","run","src/reporting/serve_dashboard.py","--server.port=8501","--server.address=0.0.0.0"]

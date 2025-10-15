@@ -1,0 +1,17 @@
+environment: dev
+database:
+  uri: sqlite:///pulsepipe.db
+data_paths:
+  raw: data/raw
+  processed: data/processed
+  models: models
+kpi_thresholds:
+  conversion_rate_min: 0.02
+  conversion_rate_max: 0.4
+  latency_ms_p95_max: 500
+ml:
+  target: "is_churn"
+  test_size: 0.2
+  random_state: 42
+api:
+  page_size_default: 50
